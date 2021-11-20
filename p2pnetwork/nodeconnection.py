@@ -138,7 +138,7 @@ class NodeConnection(threading.Thread):
             # BUG: possible buffer overflow when no EOT_CHAR is found => Fix by max buffer count or so?
             if chunk != b'':
                 buffer += chunk
-                eot_pos = buffer.find(self.EOT_CHAR)
+                eot_pos = buffer.rfind(self.EOT_CHAR)
 
                 while eot_pos > 0:
                     packet = buffer[:eot_pos]
